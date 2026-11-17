@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beer para Vivir - Catálogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="/css/estilos.css">
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <img src="https://lh3.googleusercontent.com/d/1ycRSw4vTn6mYH57682nXU4G1XchpgfWl" alt="Logo Beer para Vivir">
+      <h1>Beer para Vivir</h1>
+    </div>
+
+    <button class="header-cart" onclick="abrirCarrito()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-bubble" id="headerCartCount">0</span>
+      <span class="header-cart-total" id="headerCartTotal">$0</span>
+    </button>
+  </div>
+
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input id="searchInput" placeholder="Buscar cerveza, estilo, marca..." oninput="filtrarProductos()">
+  </div>
+</header>
+
+<div class="categorias-container" id="categoriasContainer">
+  <button class="cat-pill active">Todas</button>
+</div>
+
+<main class="productos-grid" id="productosGrid">
+  <p style="grid-column:1/-1;color:#555;text-align:center;padding:30px">
+    Cargando catálogo de cervezas...
+  </p>
+</main>
+
+<div class="cart-bar" id="cartBar">
+  <div>
+    <span id="cartCount">0 ítems</span>
+    <div class="cart-total" id="cartTotal">$0</div>
+  </div>
+  <button class="btn-view-cart" onclick="abrirCarrito()">
+    <i class="fas fa-shopping-cart"></i> Ver pedido
+  </button>
+</div>
+
+<div class="modal-overlay" id="cartModal">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2>Tu pedido</h2>
+      <button class="close-modal" onclick="cerrarCarrito()">&times;</button>
+    </div>
+
+    <div id="cartItemsList"></div>
+
+    <div class="checkout-section">
+      <label><i class="fas fa-ticket-alt"></i> Cupón de descuento</label>
+      <div class="input-group">
+        <input id="cuponInput" placeholder="Ingresá tu código">
+        <button class="btn-action-small" onclick="aplicarCupon()">Canjear</button>
+      </div>
+      <small id="cuponMsg"></small>
+    </div>
+
+    <div class="checkout-section">
+      <label><i class="fas fa-truck"></i> Modalidad de entrega</label>
+      <select id="tipoEntrega">
+        <option value="Bar">Retirar en el Bar (Caseros)</option>
+        <option value="Envio">Coordinar envío a domicilio</option>
+      </select>
+    </div>
+
+    <div class="form-client">
+      <label>Datos para el pedido</label>
+      <input id="clienteNombre" placeholder="Nombre y apellido">
+      <input id="clienteTelefono" type="tel" placeholder="Teléfono / WhatsApp">
+    </div>
+
+    <div class="checkout-section">
+      <label><i class="fas fa-pen"></i> Notas del pedido (opcional)</label>
+      <textarea id="notasPedido" rows="3" maxlength="500" placeholder="¿Querés dejarnos alguna indicación especial?"></textarea>
+    </div>
+
+    <div class="aviso-birrero">
+      <strong>🍺 Información importante</strong>
+      <p>
+        Estimado birrero: cuando recibamos tu pedido,
+        nos pondremos en contacto con vos para coordinar
+        el pago y la entrega.
+      </p>
+      <p>
+        Si necesitás un envío por Andreani o Correo Argentino,
+        lo gestionaremos directamente por WhatsApp.
+      </p>
+    </div>
+
+    <button class="btn-checkout" onclick="enviarPedido()">
+      Confirmar pedido
+    </button>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <p>Registrando pedido...</p>
+</div>
+
+<section class="providers-section" id="proveedoresSection" style="display:none">
+  <div class="providers-heading">
+    <span class="providers-kicker">NUESTRO UNIVERSO CERVECERO</span>
+    <h2>Cervecerías amigas</h2>
+    <p>Productores con los que compartimos nuestra pasión por la cerveza.</p>
+  </div>
+  <div class="providers-grid" id="providersGrid"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <img src="https://lh3.googleusercontent.com/d/1ycRSw4vTn6mYH57682nXU4G1XchpgfWl" alt="Logo">
+      <strong>Beer para Vivir</strong>
+    </div>
+
+    <div class="footer-details">
+      <span>Caseros, Tres de Febrero, Buenos Aires</span>
+      <span>beerparavivir@gmail.com</span>
+      <span>+54 9 11 3609-1840</span>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://wa.me/5491136091840" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/beerparavivir/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+    © 2026 Beer para Vivir · Mayores de 18 años. Beber con moderación.
+  </div>
+</footer>
+
+<script src="/js/app.js" defer></script>
+
+</body>
+</html>
